@@ -70,7 +70,7 @@ function App() {
                 >
                   <div className="w-48 h-48 md:w-64 md:h-64 rounded-full overflow-hidden border-4 border-[#FF9933] shadow-xl">
                     <img 
-                      src="./attached_assets/WhatsApp Image 2025-03-12 at 4.57.34 PM.jpeg"
+                      src="/assets/profile.jpeg"
                       alt="Lalit Shukla"
                       className="w-full h-full object-cover"
                       onError={(e) => {
