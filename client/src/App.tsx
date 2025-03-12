@@ -239,6 +239,10 @@ function App() {
                       src={post.imageUrl} 
                       alt={post.title}
                       className="w-full h-full object-cover hover:scale-105 transition-transform duration-300"
+                      onError={(e) => {
+                        // Fallback to a local placeholder if the image fails to load
+                        e.currentTarget.src = "https://placehold.co/600x400/FF9933/white?text=Activity";
+                      }}
                     />
                   </div>
                   <div className="p-6">
@@ -417,21 +421,21 @@ const posts = [
   {
     title: "विकास यात्रा - Development Journey",
     description: "Inaugurating new road development project in Magathane, enhancing connectivity for our residents. भाजपा के विकास के एजेंडे को आगे बढ़ाते हुए।",
-    imageUrl: "https://placehold.co/600x400/FF9933/white?text=Development+Project",
+    imageUrl: "https://images.unsplash.com/photo-1533773984958-b816551a3f98?w=600&auto=format&fit=crop&q=80",
     date: "March 10, 2025",
     location: "Magathane East"
   },
   {
     title: "जन संवाद - Public Dialogue",
     description: "Monthly public meeting with residents, addressing community concerns and sharing progress updates. जनता की आवाज, हमारी प्राथमिकता।",
-    imageUrl: "https://placehold.co/600x400/FF9933/white?text=Public+Meeting",
+    imageUrl: "https://images.unsplash.com/photo-1577563908411-5077b6dc7624?w=600&auto=format&fit=crop&q=80",
     date: "March 5, 2025",
     location: "Ward Community Hall"
   },
   {
     title: "स्वच्छ भारत अभियान",
     description: "Leading cleanliness drive with BJP karyakartas, making our constituency cleaner and greener. स्वच्छ भारत, स्वस्थ भारत।",
-    imageUrl: "https://placehold.co/600x400/FF9933/white?text=Cleanliness+Drive",
+    imageUrl: "https://images.unsplash.com/photo-1618477202872-8e4026202244?w=600&auto=format&fit=crop&q=80",
     date: "March 1, 2025",
     location: "Magathane West"
   },
