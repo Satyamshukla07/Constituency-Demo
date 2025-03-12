@@ -1,0 +1,46 @@
+"Develop a scalable and feature-rich mobile app for Magatane Vidhansabha, integrating MongoDB as the backend database. The app should be designed with a Maharashtra political theme and include the following features:
+
+🔹 User Authentication & Hierarchy:
+✅ Login & Sign-Up System – Secure authentication using JWT.
+✅ Role-Based Access Control – Users assigned roles (MLA, Party Workers, General Public) with different permissions.
+✅ MongoDB User Schema storing user details, role, and activity history.
+
+🔹 Event & Program Management:
+✅ Events Module – Store event details (title, date, description, photos, and videos) in MongoDB Collections.
+✅ Event Media Storage – Use Cloudinary/AWS S3 for media storage.
+✅ Event Participation Count – Display user engagement.
+
+🔹 Notifications & Reminders:
+✅ Push Notifications & Email Alerts for upcoming meetings, rallies, and functions using Firebase/OneSignal.
+✅ Automatic Reminder System for scheduled events.
+
+🔹 Public Issue Reporting:
+✅ Complaint & Issue Submission – Users can report local problems with images and location tagging, stored in MongoDB.
+✅ Issue Status Tracking – View issue resolution progress.
+
+🔹 Live Updates & Newsfeed:
+✅ Admin Dashboard – Post announcements, updates, and government schemes.
+✅ MongoDB News Collection storing posts with timestamps.
+
+🔹 Engagement & Community:
+✅ User Counter & Active Members Display – Live user count from the database.
+✅ Surveys & Polls – Conduct public opinion polls, results stored in MongoDB.
+
+🔹 Additional Features:
+✅ Volunteer Registration – Users can sign up for campaigns, stored in MongoDB.
+✅ Feedback & Suggestions – Users can send feedback directly to leadership.
+✅ Social Media Integration – Share updates to WhatsApp, Facebook, Twitter.
+
+🔹 Tech Stack:
+Frontend: React Native / Flutter
+Backend: Node.js with Express.js
+Database: MongoDB (with Mongoose ORM)
+Authentication: JWT & OAuth
+Storage: AWS S3 / Cloudinary for media
+Notifications: Firebase / OneSignal
+Hosting: AWS / DigitalOcean
+🔹 UI/UX Considerations:
+🎨 Political Theme – Colors inspired by Maharashtra politics.
+📱 Dynamic & Interactive UI – Smooth user experience.
+⚡ Optimized Performance – Fast data retrieval with MongoDB indexing.
+
