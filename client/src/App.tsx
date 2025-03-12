@@ -174,6 +174,52 @@ function App() {
           </div>
         </div>
 
+        {/* Posts Section */}
+        <div className="py-24 bg-white/50" id="posts">
+          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <motion.div
+              initial={{ opacity: 0 }}
+              whileInView={{ opacity: 1 }}
+              transition={{ duration: 0.8 }}
+              className="text-center mb-12"
+            >
+              <h2 className="text-3xl font-bold text-gray-900 mb-4">
+                Recent Activities
+              </h2>
+              <p className="text-lg text-gray-600">
+                Dedicated service to our community and constituency
+              </p>
+            </motion.div>
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+              {posts.map((post, index) => (
+                <motion.div
+                  key={index}
+                  initial={{ opacity: 0, y: 20 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.5, delay: index * 0.1 }}
+                  className="bg-white rounded-lg overflow-hidden shadow-lg"
+                >
+                  <div className="aspect-video relative overflow-hidden">
+                    <img 
+                      src={post.imageUrl} 
+                      alt={post.title}
+                      className="w-full h-full object-cover hover:scale-105 transition-transform duration-300"
+                    />
+                  </div>
+                  <div className="p-6">
+                    <h3 className="text-xl font-semibold mb-2">{post.title}</h3>
+                    <p className="text-gray-600 mb-4">{post.description}</p>
+                    <div className="flex items-center justify-between text-sm text-gray-500">
+                      <span>{post.date}</span>
+                      <span>{post.location}</span>
+                    </div>
+                  </div>
+                </motion.div>
+              ))}
+            </div>
+          </div>
+        </div>
+
         {/* Contact Section */}
         <div className="py-24 bg-white/50" id="contact">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -249,6 +295,51 @@ const achievements = [
     title: "Social Welfare",
     description: "Organized health camps and education support programs aligning with BJP's vision of inclusive growth.",
   },
+];
+
+const posts = [
+  {
+    title: "विकास यात्रा - Development Journey",
+    description: "Inaugurating new road development project in Magathane, enhancing connectivity for our residents. भाजपा के विकास के एजेंडे को आगे बढ़ाते हुए।",
+    imageUrl: "https://placehold.co/600x400/FF9933/white?text=Development+Project",
+    date: "March 10, 2025",
+    location: "Magathane East"
+  },
+  {
+    title: "जन संवाद - Public Dialogue",
+    description: "Monthly public meeting with residents, addressing community concerns and sharing progress updates. जनता की आवाज, हमारी प्राथमिकता।",
+    imageUrl: "https://placehold.co/600x400/FF9933/white?text=Public+Meeting",
+    date: "March 5, 2025",
+    location: "Ward Community Hall"
+  },
+  {
+    title: "स्वच्छ भारत अभियान",
+    description: "Leading cleanliness drive with BJP karyakartas, making our constituency cleaner and greener. स्वच्छ भारत, स्वस्थ भारत।",
+    imageUrl: "https://placehold.co/600x400/FF9933/white?text=Cleanliness+Drive",
+    date: "March 1, 2025",
+    location: "Magathane West"
+  },
+  {
+    title: "शिक्षा सशक्तिकरण - Education Empowerment",
+    description: "Distributing educational materials to underprivileged students. भविष्य की नींव, शिक्षा के साथ।",
+    imageUrl: "https://placehold.co/600x400/FF9933/white?text=Education+Initiative",
+    date: "February 28, 2025",
+    location: "Magathane School Complex"
+  },
+  {
+    title: "स्वास्थ्य शिविर - Health Camp",
+    description: "Free health checkup camp organized for senior citizens. स्वस्थ समाज, सशक्त समाज।",
+    imageUrl: "https://placehold.co/600x400/FF9933/white?text=Health+Camp",
+    date: "February 25, 2025",
+    location: "Community Center"
+  },
+  {
+    title: "भाजपा कार्यकर्ता सम्मेलन",
+    description: "Meeting with BJP workers to discuss party initiatives and future plans. संगठन की मजबूती, विकास की गारंटी।",
+    imageUrl: "https://placehold.co/600x400/FF9933/white?text=BJP+Workers+Meet",
+    date: "February 20, 2025",
+    location: "BJP Office Magathane"
+  }
 ];
 
 export default App;
