@@ -2,15 +2,7 @@ import { Switch, Route } from "wouter";
 import { queryClient } from "./lib/queryClient";
 import { QueryClientProvider } from "@tanstack/react-query";
 import { Toaster } from "@/components/ui/toaster";
-import { AuthProvider } from "@/hooks/use-auth";
-import NotFound from "@/pages/not-found";
-import HomePage from "@/pages/home-page";
-import AuthPage from "@/pages/auth-page";
-import EventsPage from "@/pages/events-page";
-import IssuesPage from "@/pages/issues-page";
-import { ProtectedRoute } from "@/lib/protected-route";
-import { Navbar } from "@/components/layout/navbar";
-import { motion } from "framer-motion";
+import { motion, AnimatePresence } from "framer-motion";
 import { Link } from "wouter";
 import { Button } from "@/components/ui/button";
 import {
@@ -22,9 +14,18 @@ import {
   Users,
   Target,
   Sparkles,
-  ArrowDown
+  ArrowDown,
+  ChevronRight
 } from "lucide-react";
-import { FaTwitter, FaFacebook, FaInstagram, FaWhatsapp, FaFlag } from "react-icons/fa";
+import { FaTwitter, FaFacebook, FaInstagram, FaWhatsapp, FaFlag, FaHeart } from "react-icons/fa";
+import NotFound from "@/pages/not-found";
+import HomePage from "@/pages/home-page";
+import AuthPage from "@/pages/auth-page";
+import EventsPage from "@/pages/events-page";
+import IssuesPage from "@/pages/issues-page";
+import { ProtectedRoute } from "@/lib/protected-route";
+import { Navbar } from "@/components/layout/navbar";
+
 
 function Router() {
   return (
@@ -46,16 +47,29 @@ function App() {
     <QueryClientProvider client={queryClient}>
       <div className="min-h-screen bg-gradient-to-b from-orange-50 to-white">
         {/* Hero Section */}
-        <div className="relative overflow-hidden bg-[#FF9933]/10">
+        <div className="relative overflow-hidden bg-gradient-to-br from-[#FF9933]/20 via-white/50 to-[#138808]/20">
+          <div className="absolute inset-0 bg-grid-white/10 [mask-image:linear-gradient(0deg,transparent,black)]" />
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-24">
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8 }}
-              className="text-center"
+              className="text-center relative z-10"
             >
               <div className="flex justify-center items-center mb-8">
-                <FaFlag className="w-24 h-24 text-[#FF9933]" />
+                <motion.div
+                  animate={{ 
+                    scale: [1, 1.1, 1],
+                    rotate: [0, 5, -5, 0]
+                  }}
+                  transition={{ 
+                    duration: 2,
+                    repeat: Infinity,
+                    repeatType: "reverse"
+                  }}
+                >
+                  <FaFlag className="w-24 h-24 text-[#FF9933]" />
+                </motion.div>
               </div>
               <h1 className="text-5xl md:text-6xl font-bold text-gray-900 mb-6">
                 Lalit Shukla
@@ -66,15 +80,23 @@ function App() {
               <p className="text-lg text-gray-600 max-w-2xl mx-auto mb-12">
                 Dedicated BJP leader working towards the development and prosperity of Magathane constituency
               </p>
-              <Button asChild size="lg" className="bg-[#FF9933] hover:bg-[#FF9933]/90">
+              <Button asChild size="lg" className="bg-[#FF9933] hover:bg-[#FF9933]/90 shadow-lg transform hover:scale-105 transition-all">
                 <Link href="#contact">
                   <span className="flex items-center">
                     Connect With Me
-                    <ArrowDown className="ml-2 h-4 w-4" />
+                    <ArrowDown className="ml-2 h-4 w-4 animate-bounce" />
                   </span>
                 </Link>
               </Button>
             </motion.div>
+          </div>
+
+          {/* Decorative Elements */}
+          <div className="absolute top-0 right-0 -translate-y-12 translate-x-12 blur-2xl opacity-20">
+            <div className="w-96 h-96 rounded-full bg-[#FF9933]" />
+          </div>
+          <div className="absolute bottom-0 left-0 translate-y-12 -translate-x-12 blur-2xl opacity-20">
+            <div className="w-96 h-96 rounded-full bg-[#138808]" />
           </div>
         </div>
 
@@ -275,6 +297,87 @@ function App() {
             </div>
           </div>
         </div>
+
+        {/* Footer */}
+        <footer className="bg-gray-900 text-white py-12">
+          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="grid grid-cols-1 md:grid-cols-4 gap-8 mb-8">
+              <div>
+                <h3 className="text-lg font-semibold mb-4">Quick Links</h3>
+                <ul className="space-y-2">
+                  <li><a href="#about" className="hover:text-[#FF9933] transition-colors">About Me</a></li>
+                  <li><a href="#achievements" className="hover:text-[#FF9933] transition-colors">Achievements</a></li>
+                  <li><a href="#posts" className="hover:text-[#FF9933] transition-colors">Recent Activities</a></li>
+                  <li><a href="#contact" className="hover:text-[#FF9933] transition-colors">Contact</a></li>
+                </ul>
+              </div>
+              <div>
+                <h3 className="text-lg font-semibold mb-4">Constituency</h3>
+                <ul className="space-y-2">
+                  <li><a href="#" className="hover:text-[#FF9933] transition-colors">Ward Information</a></li>
+                  <li><a href="#" className="hover:text-[#FF9933] transition-colors">Development Projects</a></li>
+                  <li><a href="#" className="hover:text-[#FF9933] transition-colors">Citizen Services</a></li>
+                  <li><a href="#" className="hover:text-[#FF9933] transition-colors">Report Issues</a></li>
+                </ul>
+              </div>
+              <div>
+                <h3 className="text-lg font-semibold mb-4">BJP Resources</h3>
+                <ul className="space-y-2">
+                  <li><a href="https://www.bjp.org" target="_blank" rel="noopener noreferrer" className="hover:text-[#FF9933] transition-colors">BJP Official Website</a></li>
+                  <li><a href="#" className="hover:text-[#FF9933] transition-colors">Party Membership</a></li>
+                  <li><a href="#" className="hover:text-[#FF9933] transition-colors">Vision Document</a></li>
+                  <li><a href="#" className="hover:text-[#FF9933] transition-colors">Press Releases</a></li>
+                </ul>
+              </div>
+              <div>
+                <h3 className="text-lg font-semibold mb-4">Connect</h3>
+                <div className="flex space-x-4 mb-4">
+                  <a href="https://twitter.com" target="_blank" rel="noopener noreferrer" 
+                    className="text-white hover:text-[#FF9933] transition-colors">
+                    <FaTwitter className="w-6 h-6" />
+                  </a>
+                  <a href="https://facebook.com" target="_blank" rel="noopener noreferrer"
+                    className="text-white hover:text-[#FF9933] transition-colors">
+                    <FaFacebook className="w-6 h-6" />
+                  </a>
+                  <a href="https://instagram.com" target="_blank" rel="noopener noreferrer"
+                    className="text-white hover:text-[#FF9933] transition-colors">
+                    <FaInstagram className="w-6 h-6" />
+                  </a>
+                  <a href="https://wa.me/your-number" target="_blank" rel="noopener noreferrer"
+                    className="text-white hover:text-[#FF9933] transition-colors">
+                    <FaWhatsapp className="w-6 h-6" />
+                  </a>
+                </div>
+                <p className="text-sm text-gray-400">
+                  Subscribe to our newsletter for updates
+                </p>
+                <div className="mt-2 flex">
+                  <input 
+                    type="email" 
+                    placeholder="Enter your email"
+                    className="px-3 py-2 bg-gray-800 text-white rounded-l-md focus:outline-none focus:ring-1 focus:ring-[#FF9933]"
+                  />
+                  <button className="px-4 py-2 bg-[#FF9933] text-white rounded-r-md hover:bg-[#FF9933]/90 transition-colors">
+                    <ChevronRight className="w-4 h-4" />
+                  </button>
+                </div>
+              </div>
+            </div>
+            <div className="border-t border-gray-800 pt-8 mt-8">
+              <div className="flex flex-col md:flex-row justify-between items-center">
+                <p className="text-sm text-gray-400">
+                  © 2025 Lalit Shukla. All rights reserved.
+                </p>
+                <div className="flex items-center mt-4 md:mt-0">
+                  <span className="text-sm text-gray-400 flex items-center">
+                    Made with <FaHeart className="w-4 h-4 text-[#FF9933] mx-1" /> for the people of Magathane
+                  </span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </footer>
 
         <Toaster />
       </div>
