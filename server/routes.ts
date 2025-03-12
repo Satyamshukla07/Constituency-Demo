@@ -2,11 +2,83 @@ import type { Express } from "express";
 import { createServer, type Server } from "http";
 import { storage } from "./storage";
 import { setupAuth } from "./auth";
-import { insertEventSchema, insertIssueSchema, insertVolunteerSchema } from "@shared/schema";
+import { insertEventSchema, insertIssueSchema, insertVolunteerSchema, insertWardSchema } from "@shared/schema";
 import { z } from "zod";
 
 export async function registerRoutes(app: Express): Promise<Server> {
   setupAuth(app);
+
+  // Wards
+  app.post("/api/wards", async (req, res) => {
+    if (!req.isAuthenticated()) return res.sendStatus(401);
+    if (req.user.role !== "admin") return res.sendStatus(403);
+
+    const result = insertWardSchema.safeParse(req.body);
+    if (!result.success) return res.status(400).json(result.error);
+
+    try {
+      const ward = await storage.createWard(result.data);
+      res.status(201).json(ward);
+    } catch (err: any) {
+      res.status(500).json({ message: err.message });
+    }
+  });
+
+  app.get("/api/wards", async (req, res) => {
+    if (!req.isAuthenticated()) return res.sendStatus(401);
+
+    try {
+      const wards = await storage.getWards();
+      res.json(wards);
+    } catch (err: any) {
+      res.status(500).json({ message: err.message });
+    }
+  });
+
+  app.get("/api/wards/:id", async (req, res) => {
+    if (!req.isAuthenticated()) return res.sendStatus(401);
+
+    try {
+      const ward = await storage.getWard(parseInt(req.params.id));
+      if (!ward) return res.sendStatus(404);
+      res.json(ward);
+    } catch (err: any) {
+      res.status(500).json({ message: err.message });
+    }
+  });
+
+  app.get("/api/wards/:id/users", async (req, res) => {
+    if (!req.isAuthenticated()) return res.sendStatus(401);
+
+    try {
+      const users = await storage.getUsersByWard(parseInt(req.params.id));
+      res.json(users);
+    } catch (err: any) {
+      res.status(500).json({ message: err.message });
+    }
+  });
+
+  app.get("/api/wards/:id/events", async (req, res) => {
+    if (!req.isAuthenticated()) return res.sendStatus(401);
+
+    try {
+      const events = await storage.getEventsByWard(parseInt(req.params.id));
+      res.json(events);
+    } catch (err: any) {
+      res.status(500).json({ message: err.message });
+    }
+  });
+
+  app.get("/api/wards/:id/issues", async (req, res) => {
+    if (!req.isAuthenticated()) return res.sendStatus(401);
+
+    try {
+      const issues = await storage.getIssuesByWard(parseInt(req.params.id));
+      res.json(issues);
+    } catch (err: any) {
+      res.status(500).json({ message: err.message });
+    }
+  });
 
   // Events
   app.post("/api/events", (req, res) => {
@@ -75,6 +147,39 @@ export async function registerRoutes(app: Express): Promise<Server> {
     storage.createVolunteer({ ...result.data, userId: req.user.id })
       .then(volunteer => res.status(201).json(volunteer))
       .catch(err => res.status(500).json({ message: err.message }));
+  });
+
+  // Create initial test wards if none exist
+  storage.getWards().then(async (wards) => {
+    if (wards.length === 0) {
+      const testWards = [
+        {
+          name: "North Ward",
+          number: 1,
+          population: 25000,
+          description: "Northern region of Magatane",
+          keyIssues: "Infrastructure development, Water supply",
+        },
+        {
+          name: "South Ward",
+          number: 2,
+          population: 30000,
+          description: "Southern region of Magatane",
+          keyIssues: "Education facilities, Healthcare",
+        },
+        {
+          name: "East Ward",
+          number: 3,
+          population: 28000,
+          description: "Eastern region of Magatane",
+          keyIssues: "Road maintenance, Waste management",
+        },
+      ];
+
+      for (const ward of testWards) {
+        await storage.createWard(ward);
+      }
+    }
   });
 
   const httpServer = createServer(app);
