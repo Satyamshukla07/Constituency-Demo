@@ -90,4 +90,17 @@ export function setupAuth(app: Express) {
     if (!req.isAuthenticated()) return res.sendStatus(401);
     res.json(req.user);
   });
+
+  // Create a test admin user if none exists
+  storage.getUserByUsername("admin").then(async (user) => {
+    if (!user) {
+      await storage.createUser({
+        username: "admin",
+        password: await hashPassword("admin123"),
+        role: "admin",
+        fullName: "Admin User",
+        phone: "1234567890"
+      });
+    }
+  });
 }
