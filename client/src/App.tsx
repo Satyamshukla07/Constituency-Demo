@@ -56,19 +56,28 @@ function App() {
               transition={{ duration: 0.8 }}
               className="text-center relative z-10"
             >
-              <div className="flex justify-center items-center mb-8">
+              <div className="flex flex-col items-center justify-center mb-8">
                 <motion.div
                   animate={{ 
-                    scale: [1, 1.1, 1],
-                    rotate: [0, 5, -5, 0]
+                    scale: [1, 1.05, 1],
                   }}
                   transition={{ 
-                    duration: 2,
+                    duration: 3,
                     repeat: Infinity,
                     repeatType: "reverse"
                   }}
+                  className="relative mb-8"
                 >
-                  <FaFlag className="w-24 h-24 text-[#FF9933]" />
+                  <div className="w-48 h-48 md:w-64 md:h-64 rounded-full overflow-hidden border-4 border-[#FF9933] shadow-xl">
+                    <img 
+                      src="/attached_assets/WhatsApp Image 2025-03-12 at 4.57.34 PM.jpeg"
+                      alt="Lalit Shukla"
+                      className="w-full h-full object-cover"
+                    />
+                  </div>
+                  <div className="absolute -bottom-4 right-0 transform translate-x-1/4">
+                    <FaFlag className="w-16 h-16 text-[#FF9933]" />
+                  </div>
                 </motion.div>
               </div>
               <h1 className="text-5xl md:text-6xl font-bold text-gray-900 mb-6">
