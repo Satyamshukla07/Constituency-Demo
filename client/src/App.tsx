@@ -70,9 +70,13 @@ function App() {
                 >
                   <div className="w-48 h-48 md:w-64 md:h-64 rounded-full overflow-hidden border-4 border-[#FF9933] shadow-xl">
                     <img 
-                      src="/attached_assets/WhatsApp Image 2025-03-12 at 4.57.34 PM.jpeg"
+                      src="./attached_assets/WhatsApp Image 2025-03-12 at 4.57.34 PM.jpeg"
                       alt="Lalit Shukla"
                       className="w-full h-full object-cover"
+                      onError={(e) => {
+                        const target = e.target as HTMLImageElement;
+                        target.src = "https://placehold.co/400x400/FF9933/white?text=LS";
+                      }}
                     />
                   </div>
                   <div className="absolute -bottom-4 right-0 transform translate-x-1/4">
