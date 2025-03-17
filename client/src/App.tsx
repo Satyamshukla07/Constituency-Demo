@@ -94,23 +94,43 @@ function App() {
                 Dedicated BJP leader working towards the development and prosperity of Magathane constituency
               </p>
               <div className="bg-white/80 backdrop-blur-sm rounded-lg p-6 shadow-xl mb-12 max-w-2xl mx-auto">
-                <h3 className="text-xl font-semibold text-[#FF9933] mb-4">Recent Highlight</h3>
-                <div className="flex flex-col md:flex-row items-center gap-6">
-                  <div className="w-full md:w-48 h-48 rounded-lg overflow-hidden shadow-lg">
-                    <img 
-                      src="/assets/posts/pm-meeting.jpeg"
-                      alt="Meeting with PM Modi"
-                      className="w-full h-full object-cover"
-                      loading="lazy"
-                      onError={(e) => {
-                        const target = e.target as HTMLImageElement;
-                        target.src = "https://placehold.co/400x400/FF9933/white?text=PM+Meeting";
-                      }}
-                    />
+                <h3 className="text-xl font-semibold text-[#FF9933] mb-4">Recent Highlights</h3>
+                <div className="space-y-8">
+                  <div className="flex flex-col md:flex-row items-center gap-6">
+                    <div className="w-full md:w-48 h-48 rounded-lg overflow-hidden shadow-lg">
+                      <img 
+                        src="/assets/posts/residential-help.jpeg"
+                        alt="Helping Residential People"
+                        className="w-full h-full object-cover"
+                        loading="lazy"
+                        onError={(e) => {
+                          const target = e.target as HTMLImageElement;
+                          target.src = "https://placehold.co/400x400/FF9933/white?text=Community+Service";
+                        }}
+                      />
+                    </div>
+                    <div className="text-center md:text-left">
+                      <h4 className="text-lg font-semibold mb-2">Supporting Our Community</h4>
+                      <p className="text-gray-600">Dedicated to serving our residential community by actively addressing their concerns and needs. From helping with daily challenges to implementing long-term solutions, we're committed to making life better for every resident in Magathane.</p>
+                    </div>
                   </div>
-                  <div className="text-center md:text-left">
-                    <h4 className="text-lg font-semibold mb-2">Special Meeting with PM Narendra Modi</h4>
-                    <p className="text-gray-600">Honored to meet Hon'ble Prime Minister Shri Narendra Modi ji and discuss the development initiatives for Magathane constituency. Together we are working towards a stronger and more prosperous Mumbai.</p>
+                  <div className="flex flex-col md:flex-row items-center gap-6">
+                    <div className="w-full md:w-48 h-48 rounded-lg overflow-hidden shadow-lg">
+                      <img 
+                        src="/assets/posts/pm-meeting.jpeg"
+                        alt="Meeting with PM Modi"
+                        className="w-full h-full object-cover"
+                        loading="lazy"
+                        onError={(e) => {
+                          const target = e.target as HTMLImageElement;
+                          target.src = "https://placehold.co/400x400/FF9933/white?text=PM+Meeting";
+                        }}
+                      />
+                    </div>
+                    <div className="text-center md:text-left">
+                      <h4 className="text-lg font-semibold mb-2">Special Meeting with PM Narendra Modi</h4>
+                      <p className="text-gray-600">Honored to meet Hon'ble Prime Minister Shri Narendra Modi ji and discuss the development initiatives for Magathane constituency. Together we are working towards a stronger and more prosperous Mumbai.</p>
+                    </div>
                   </div>
                 </div>
               </div>
