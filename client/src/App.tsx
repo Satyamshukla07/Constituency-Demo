@@ -28,10 +28,112 @@ import { Navbar } from "@/components/layout/navbar";
 import React, { useState, useEffect } from 'react';
 
 // Placeholder components
-const NewsSection = () => <div>News & Updates Placeholder</div>;
-const EventsCalendar = () => <div>Upcoming Events Calendar Placeholder</div>;
-const TestimonialsSection = () => <div>Testimonials & Supporters Placeholder</div>;
-const ContactSection = () => <div>Contact Section Placeholder</div>;
+const NewsSection = () => (
+  <div className="py-16 bg-white">
+    <div className="max-w-7xl mx-auto px-4">
+      <h2 className="text-3xl font-bold text-center mb-12">Latest News & Updates</h2>
+      <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+        {[1, 2, 3].map((item) => (
+          <div key={item} className="bg-white rounded-xl shadow-lg overflow-hidden">
+            <img src={`/assets/news-${item}.jpg`} alt="News" className="w-full h-48 object-cover" />
+            <div className="p-6">
+              <h3 className="text-xl font-semibold mb-2">Latest Development Update</h3>
+              <p className="text-gray-600">Recent initiatives and community developments in our constituency.</p>
+              <button className="mt-4 text-blue-600 hover:text-blue-800">Read More →</button>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </div>
+);
+
+const TestimonialsSection = () => (
+  <div className="py-16 bg-gray-50">
+    <div className="max-w-7xl mx-auto px-4">
+      <h2 className="text-3xl font-bold text-center mb-12">What People Say</h2>
+      <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+        {[1, 2, 3].map((item) => (
+          <div key={item} className="bg-white p-6 rounded-xl shadow-lg">
+            <div className="flex items-center mb-4">
+              <div className="w-12 h-12 rounded-full bg-gray-200 mr-4"></div>
+              <div>
+                <h4 className="font-semibold">Community Member</h4>
+                <p className="text-gray-500">Local Resident</p>
+              </div>
+            </div>
+            <p className="text-gray-600">"Great initiatives for our community development and welfare."</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </div>
+);
+
+const EventsCalendar = () => (
+  <div className="py-16 bg-white">
+    <div className="max-w-7xl mx-auto px-4">
+      <h2 className="text-3xl font-bold text-center mb-12">Upcoming Events</h2>
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+        {[1, 2, 3].map((item) => (
+          <div key={item} className="bg-white rounded-xl shadow-lg p-6">
+            <div className="mb-4">
+              <span className="text-lg font-semibold">Community Meeting</span>
+              <p className="text-gray-500">March 25, 2024</p>
+            </div>
+            <p className="text-gray-600 mb-4">Join us for an important community discussion.</p>
+            <button className="bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700">
+              RSVP Now
+            </button>
+          </div>
+        ))}
+      </div>
+    </div>
+  </div>
+);
+
+const ContactSection = () => (
+  <div className="py-16 bg-gray-50">
+    <div className="max-w-7xl mx-auto px-4">
+      <h2 className="text-3xl font-bold text-center mb-12">Get in Touch</h2>
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-12">
+        <div>
+          <h3 className="text-xl font-semibold mb-4">Contact Information</h3>
+          <div className="space-y-4">
+            <p className="flex items-center"><Phone className="mr-2" /> +91 1234567890</p>
+            <p className="flex items-center"><Mail className="mr-2" /> contact@example.com</p>
+            <p className="flex items-center"><MapPin className="mr-2" /> Office Address, City, State</p>
+          </div>
+          <div className="mt-8 flex space-x-4">
+            <FaTwitter className="w-6 h-6 text-gray-600 hover:text-blue-600 cursor-pointer" />
+            <FaFacebook className="w-6 h-6 text-gray-600 hover:text-blue-600 cursor-pointer" />
+            <FaInstagram className="w-6 h-6 text-gray-600 hover:text-blue-600 cursor-pointer" />
+          </div>
+        </div>
+        <form className="space-y-4">
+          <input
+            type="text"
+            placeholder="Your Name"
+            className="w-full p-2 border rounded-lg"
+          />
+          <input
+            type="email"
+            placeholder="Your Email"
+            className="w-full p-2 border rounded-lg"
+          />
+          <textarea
+            placeholder="Your Message"
+            rows={4}
+            className="w-full p-2 border rounded-lg"
+          ></textarea>
+          <button className="bg-blue-600 text-white px-6 py-2 rounded-lg hover:bg-blue-700">
+            Send Message
+          </button>
+        </form>
+      </div>
+    </div>
+  </div>
+);
 
 
 function Router() {
@@ -375,6 +477,11 @@ function App() {
           </div>
         </div>
 
+        <NewsSection />
+        <TestimonialsSection />
+        <EventsCalendar />
+        <ContactSection />
+        
         {/* Footer */}
         <footer className="bg-gray-900 text-white py-8">
           <div className="max-w-7xl mx-auto px-4 text-center">
