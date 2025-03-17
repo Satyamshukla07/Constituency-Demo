@@ -25,6 +25,7 @@ import EventsPage from "@/pages/events-page";
 import IssuesPage from "@/pages/issues-page";
 import { ProtectedRoute } from "@/lib/protected-route";
 import { Navbar } from "@/components/layout/navbar";
+import React, { useState, useEffect } from 'react';
 
 
 function Router() {
@@ -43,11 +44,17 @@ function Router() {
 }
 
 function App() {
+  const [isVisible, setIsVisible] = useState(false);
+
+  useEffect(() => {
+    setIsVisible(true);
+  }, []);
+
   return (
     <QueryClientProvider client={queryClient}>
       <div className="min-h-screen bg-gradient-to-b from-orange-50 to-white">
         {/* Hero Section */}
-        <div className="relative overflow-hidden bg-gradient-to-br from-[#FF9933]/20 via-white/50 to-[#138808]/20">
+        <div className="relative overflow-hidden bg-gradient-to-br from-[#FF9933]/20 via-white/50 to-[#138808]/20 min-h-screen">
           <div className="absolute inset-0 bg-grid-white/10 [mask-image:linear-gradient(0deg,transparent,black)]" />
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-24">
             <motion.div
@@ -58,10 +65,10 @@ function App() {
             >
               <div className="flex flex-col items-center justify-center mb-8">
                 <motion.div
-                  animate={{ 
+                  animate={{
                     scale: [1, 1.05, 1],
                   }}
-                  transition={{ 
+                  transition={{
                     duration: 3,
                     repeat: Infinity,
                     repeatType: "reverse"
@@ -69,7 +76,7 @@ function App() {
                   className="relative mb-8"
                 >
                   <div className="w-48 h-48 md:w-64 md:h-64 rounded-full overflow-hidden border-4 border-[#FF9933] shadow-xl">
-                    <img 
+                    <img
                       src="/assets/profile.jpeg"
                       alt="Lalit Shukla"
                       className="w-full h-full object-cover"
@@ -93,65 +100,52 @@ function App() {
               <p className="text-lg text-gray-600 max-w-2xl mx-auto mb-8">
                 Dedicated BJP leader working towards the development and prosperity of Magathane constituency
               </p>
-              <div className="bg-white/80 backdrop-blur-sm rounded-lg p-6 shadow-xl mb-12 max-w-2xl mx-auto">
-                <h3 className="text-xl font-semibold text-[#FF9933] mb-4">Recent Highlights</h3>
-                <div className="space-y-8">
-                  <div className="flex flex-col md:flex-row items-center gap-6">
-                    <div className="w-full md:w-48 h-48 rounded-lg overflow-hidden shadow-lg">
-                      <img 
-                        src="/assets/posts/residential.jpeg"
-                        alt="Helping Residential People"
-                        className="w-full h-full object-cover"
-                        loading="lazy"
-                        onError={(e) => {
-                          const target = e.target as HTMLImageElement;
-                          console.error('Image failed to load:', target.src);
-                          target.src = "https://placehold.co/400x400/FF9933/white?text=Community+Service";
-                        }}
-                      />
-                    </div>
-                    <div className="text-center md:text-left">
-                      <h4 className="text-lg font-semibold mb-2">Supporting Our Community</h4>
-                      <p className="text-gray-600">Dedicated to serving our residential community by actively addressing their concerns and needs. From helping with daily challenges to implementing long-term solutions, we're committed to making life better for every resident in Magathane.</p>
-                    </div>
+              <motion.button
+                whileHover={{ scale: 1.05 }}
+                whileTap={{ scale: 0.95 }}
+                className="bg-[#FF9933] text-white px-8 py-3 rounded-full font-semibold shadow-lg hover:bg-[#FF8822] transition-colors"
+              >
+                Join the Movement
+              </motion.button>
+            </motion.div>
+          </div>
+        </div>
+
+        {/* Recent Highlights */}
+        <div className="py-16 bg-white/80">
+          <div className="max-w-7xl mx-auto px-4">
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.6 }}
+            >
+              <h2 className="text-3xl font-bold text-center mb-12 text-gray-900">Recent Highlights</h2>
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+                <div className="bg-white rounded-xl shadow-lg overflow-hidden">
+                  <img
+                    src="/assets/posts/residential.jpeg"
+                    alt="Community Service"
+                    className="w-full h-48 object-cover"
+                  />
+                  <div className="p-6">
+                    <h3 className="text-xl font-semibold mb-2">Supporting Our Community</h3>
+                    <p className="text-gray-600">Dedicated to serving our residential community by actively addressing their concerns and needs.</p>
                   </div>
-                  <div className="flex flex-col md:flex-row items-center gap-6">
-                    <div className="w-full md:w-48 h-48 rounded-lg overflow-hidden shadow-lg">
-                      <img 
-                        src="/assets/posts/pm-meeting.jpeg"
-                        alt="Meeting with PM Modi"
-                        className="w-full h-full object-cover"
-                        loading="lazy"
-                        onError={(e) => {
-                          const target = e.target as HTMLImageElement;
-                          target.src = "https://placehold.co/400x400/FF9933/white?text=PM+Meeting";
-                        }}
-                      />
-                    </div>
-                    <div className="text-center md:text-left">
-                      <h4 className="text-lg font-semibold mb-2">Special Meeting with PM Narendra Modi</h4>
-                      <p className="text-gray-600">Honored to meet Hon'ble Prime Minister Shri Narendra Modi ji and discuss the development initiatives for Magathane constituency. Together we are working towards a stronger and more prosperous Mumbai.</p>
-                    </div>
+                </div>
+                <div className="bg-white rounded-xl shadow-lg overflow-hidden">
+                  <img
+                    src="/assets/posts/pm-meeting.jpeg"
+                    alt="Meeting with PM Modi"
+                    className="w-full h-48 object-cover"
+                  />
+                  <div className="p-6">
+                    <h3 className="text-xl font-semibold mb-2">Meeting with PM Modi</h3>
+                    <p className="text-gray-600">Discussing development initiatives for Magathane constituency with Hon'ble Prime Minister.</p>
                   </div>
                 </div>
               </div>
-              <Button asChild size="lg" className="bg-[#FF9933] hover:bg-[#FF9933]/90 shadow-lg transform hover:scale-105 transition-all">
-                <Link href="#contact">
-                  <span className="flex items-center">
-                    Connect With Me
-                    <ArrowDown className="ml-2 h-4 w-4 animate-bounce" />
-                  </span>
-                </Link>
-              </Button>
             </motion.div>
-          </div>
-
-          {/* Decorative Elements */}
-          <div className="absolute top-0 right-0 -translate-y-12 translate-x-12 blur-2xl opacity-20">
-            <div className="w-96 h-96 rounded-full bg-[#FF9933]" />
-          </div>
-          <div className="absolute bottom-0 left-0 translate-y-12 -translate-x-12 blur-2xl opacity-20">
-            <div className="w-96 h-96 rounded-full bg-[#138808]" />
           </div>
         </div>
 
@@ -277,8 +271,8 @@ function App() {
                   className="bg-white rounded-lg overflow-hidden shadow-lg"
                 >
                   <div className="aspect-video relative overflow-hidden">
-                    <img 
-                      src={post.imageUrl} 
+                    <img
+                      src={post.imageUrl}
                       alt={post.title}
                       className="w-full h-full object-cover hover:scale-105 transition-transform duration-300"
                       onError={(e) => {
@@ -336,105 +330,43 @@ function App() {
             </div>
 
             {/* Social Media Links */}
-            <div className="flex justify-center space-x-6">
-              <a href="https://twitter.com" target="_blank" rel="noopener noreferrer" 
-                className="text-[#FF9933] hover:text-[#FF9933]/80 transition-colors">
+            <div className="flex justify-center space-x-8">
+              <motion.a
+                whileHover={{ scale: 1.1 }}
+                href="https://twitter.com" target="_blank" rel="noopener noreferrer"
+                className="text-[#FF9933] hover:text-[#FF8822]"
+              >
                 <FaTwitter className="w-8 h-8" />
-              </a>
-              <a href="https://facebook.com" target="_blank" rel="noopener noreferrer"
-                className="text-[#FF9933] hover:text-[#FF9933]/80 transition-colors">
+              </motion.a>
+              <motion.a
+                whileHover={{ scale: 1.1 }}
+                href="https://facebook.com" target="_blank" rel="noopener noreferrer"
+                className="text-[#FF9933] hover:text-[#FF8822]"
+              >
                 <FaFacebook className="w-8 h-8" />
-              </a>
-              <a href="https://instagram.com" target="_blank" rel="noopener noreferrer"
-                className="text-[#FF9933] hover:text-[#FF9933]/80 transition-colors">
+              </motion.a>
+              <motion.a
+                whileHover={{ scale: 1.1 }}
+                href="https://instagram.com" target="_blank" rel="noopener noreferrer"
+                className="text-[#FF9933] hover:text-[#FF8822]"
+              >
                 <FaInstagram className="w-8 h-8" />
-              </a>
-              <a href="https://wa.me/your-number" target="_blank" rel="noopener noreferrer"
-                className="text-[#FF9933] hover:text-[#FF9933]/80 transition-colors">
+              </motion.a>
+              <motion.a
+                whileHover={{ scale: 1.1 }}
+                href="https://wa.me/your-number" target="_blank" rel="noopener noreferrer"
+                className="text-[#FF9933] hover:text-[#FF8822]"
+              >
                 <FaWhatsapp className="w-8 h-8" />
-              </a>
+              </motion.a>
             </div>
           </div>
         </div>
 
         {/* Footer */}
-        <footer className="bg-gray-900 text-white py-12">
-          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div className="grid grid-cols-1 md:grid-cols-4 gap-8 mb-8">
-              <div>
-                <h3 className="text-lg font-semibold mb-4">Quick Links</h3>
-                <ul className="space-y-2">
-                  <li><a href="#about" className="hover:text-[#FF9933] transition-colors">About Me</a></li>
-                  <li><a href="#achievements" className="hover:text-[#FF9933] transition-colors">Achievements</a></li>
-                  <li><a href="#posts" className="hover:text-[#FF9933] transition-colors">Recent Activities</a></li>
-                  <li><a href="#contact" className="hover:text-[#FF9933] transition-colors">Contact</a></li>
-                </ul>
-              </div>
-              <div>
-                <h3 className="text-lg font-semibold mb-4">Constituency</h3>
-                <ul className="space-y-2">
-                  <li><a href="#" className="hover:text-[#FF9933] transition-colors">Ward Information</a></li>
-                  <li><a href="#" className="hover:text-[#FF9933] transition-colors">Development Projects</a></li>
-                  <li><a href="#" className="hover:text-[#FF9933] transition-colors">Citizen Services</a></li>
-                  <li><a href="#" className="hover:text-[#FF9933] transition-colors">Report Issues</a></li>
-                </ul>
-              </div>
-              <div>
-                <h3 className="text-lg font-semibold mb-4">BJP Resources</h3>
-                <ul className="space-y-2">
-                  <li><a href="https://www.bjp.org" target="_blank" rel="noopener noreferrer" className="hover:text-[#FF9933] transition-colors">BJP Official Website</a></li>
-                  <li><a href="#" className="hover:text-[#FF9933] transition-colors">Party Membership</a></li>
-                  <li><a href="#" className="hover:text-[#FF9933] transition-colors">Vision Document</a></li>
-                  <li><a href="#" className="hover:text-[#FF9933] transition-colors">Press Releases</a></li>
-                </ul>
-              </div>
-              <div>
-                <h3 className="text-lg font-semibold mb-4">Connect</h3>
-                <div className="flex space-x-4 mb-4">
-                  <a href="https://twitter.com" target="_blank" rel="noopener noreferrer" 
-                    className="text-white hover:text-[#FF9933] transition-colors">
-                    <FaTwitter className="w-6 h-6" />
-                  </a>
-                  <a href="https://facebook.com" target="_blank" rel="noopener noreferrer"
-                    className="text-white hover:text-[#FF9933] transition-colors">
-                    <FaFacebook className="w-6 h-6" />
-                  </a>
-                  <a href="https://instagram.com" target="_blank" rel="noopener noreferrer"
-                    className="text-white hover:text-[#FF9933] transition-colors">
-                    <FaInstagram className="w-6 h-6" />
-                  </a>
-                  <a href="https://wa.me/your-number" target="_blank" rel="noopener noreferrer"
-                    className="text-white hover:text-[#FF9933] transition-colors">
-                    <FaWhatsapp className="w-6 h-6" />
-                  </a>
-                </div>
-                <p className="text-sm text-gray-400">
-                  Subscribe to our newsletter for updates
-                </p>
-                <div className="mt-2 flex">
-                  <input 
-                    type="email" 
-                    placeholder="Enter your email"
-                    className="px-3 py-2 bg-gray-800 text-white rounded-l-md focus:outline-none focus:ring-1 focus:ring-[#FF9933]"
-                  />
-                  <button className="px-4 py-2 bg-[#FF9933] text-white rounded-r-md hover:bg-[#FF9933]/90 transition-colors">
-                    <ChevronRight className="w-4 h-4" />
-                  </button>
-                </div>
-              </div>
-            </div>
-            <div className="border-t border-gray-800 pt-8 mt-8">
-              <div className="flex flex-col md:flex-row justify-between items-center">
-                <p className="text-sm text-gray-400">
-                  © 2025 Lalit Shukla. All rights reserved.
-                </p>
-                <div className="flex items-center mt-4 md:mt-0">
-                  <span className="text-sm text-gray-400 flex items-center">
-                    Made with <FaHeart className="w-4 h-4 text-[#FF9933] mx-1" /> for the people of Magathane
-                  </span>
-                </div>
-              </div>
-            </div>
+        <footer className="bg-gray-900 text-white py-8">
+          <div className="max-w-7xl mx-auto px-4 text-center">
+            <p>© 2024 Lalit Shukla. All rights reserved.</p>
           </div>
         </footer>
 
