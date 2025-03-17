@@ -99,7 +99,7 @@ function App() {
                   <div className="flex flex-col md:flex-row items-center gap-6">
                     <div className="w-full md:w-48 h-48 rounded-lg overflow-hidden shadow-lg">
                       <img 
-                        src="/assets/posts/residential-help.jpeg"
+                        src="/assets/posts/residential.jpeg"
                         alt="Helping Residential People"
                         className="w-full h-full object-cover"
                         loading="lazy"
