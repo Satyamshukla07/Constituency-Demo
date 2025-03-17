@@ -407,81 +407,8 @@ function App() {
         <NewsSection />
         <EventsCalendar />
         <TestimonialsSection />
-
-
-        {/* Contact Section */}
-        <div className="py-24 bg-white/50" id="contact">
-          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <motion.div
-              initial={{ opacity: 0 }}
-              whileInView={{ opacity: 1 }}
-              transition={{ duration: 0.8 }}
-              className="text-center mb-12"
-            >
-              <h2 className="text-3xl font-bold text-gray-900 mb-4">
-                Get in Touch
-              </h2>
-              <p className="text-lg text-gray-600">
-                I'm here to listen to your concerns and work together for our community
-              </p>
-            </motion.div>
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-12">
-              <div className="flex flex-col items-center p-6 bg-white rounded-lg shadow-lg">
-                <Phone className="w-8 h-8 text-[#FF9933] mb-4" />
-                <h3 className="text-lg font-semibold mb-2">Phone</h3>
-                <p className="text-gray-600">+91 XXXXX XXXXX</p>
-              </div>
-              <div className="flex flex-col items-center p-6 bg-white rounded-lg shadow-lg">
-                <Mail className="w-8 h-8 text-[#FF9933] mb-4" />
-                <h3 className="text-lg font-semibold mb-2">Email</h3>
-                <p className="text-gray-600">contact@lalitshukla.com</p>
-              </div>
-              <div className="flex flex-col items-center p-6 bg-white rounded-lg shadow-lg">
-                <MapPin className="w-8 h-8 text-[#FF9933] mb-4" />
-                <h3 className="text-lg font-semibold mb-2">Office</h3>
-                <p className="text-gray-600">Magathane Vidhansabha Office</p>
-              </div>
-            </div>
-
-            {/* Social Media Links */}
-            <div className="flex justify-center space-x-8">
-              <motion.a
-                whileHover={{ scale: 1.1 }}
-                href="https://twitter.com" target="_blank" rel="noopener noreferrer"
-                className="text-[#FF9933] hover:text-[#FF8822]"
-              >
-                <FaTwitter className="w-8 h-8" />
-              </motion.a>
-              <motion.a
-                whileHover={{ scale: 1.1 }}
-                href="https://facebook.com" target="_blank" rel="noopener noreferrer"
-                className="text-[#FF9933] hover:text-[#FF8822]"
-              >
-                <FaFacebook className="w-8 h-8" />
-              </motion.a>
-              <motion.a
-                whileHover={{ scale: 1.1 }}
-                href="https://instagram.com" target="_blank" rel="noopener noreferrer"
-                className="text-[#FF9933] hover:text-[#FF8822]"
-              >
-                <FaInstagram className="w-8 h-8" />
-              </motion.a>
-              <motion.a
-                whileHover={{ scale: 1.1 }}
-                href="https://wa.me/your-number" target="_blank" rel="noopener noreferrer"
-                className="text-[#FF9933] hover:text-[#FF8822]"
-              >
-                <FaWhatsapp className="w-8 h-8" />
-              </motion.a>
-            </div>
-          </div>
-        </div>
-
-        <NewsSection />
-        <TestimonialsSection />
-        <EventsCalendar />
         <ContactSection />
-        
+
         {/* Footer */}
         <footer className="bg-gray-900 text-white py-8">
           <div className="max-w-7xl mx-auto px-4 text-center">
