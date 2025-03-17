@@ -105,6 +105,7 @@ function App() {
                         loading="lazy"
                         onError={(e) => {
                           const target = e.target as HTMLImageElement;
+                          console.error('Image failed to load:', target.src);
                           target.src = "https://placehold.co/400x400/FF9933/white?text=Community+Service";
                         }}
                       />
