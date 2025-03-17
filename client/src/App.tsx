@@ -98,13 +98,12 @@ function App() {
                 <div className="flex flex-col md:flex-row items-center gap-6">
                   <div className="w-full md:w-48 h-48 rounded-lg overflow-hidden shadow-lg">
                     <img 
-                      src={"/assets/WhatsApp Image 2025-03-17 at 6.03.56 PM.jpeg"}
+                      src="/assets/posts/pm-meeting.jpeg"
                       alt="Meeting with PM Modi"
                       className="w-full h-full object-cover"
                       loading="lazy"
                       onError={(e) => {
                         const target = e.target as HTMLImageElement;
-                        console.error('Image failed to load:', target.src);
                         target.src = "https://placehold.co/400x400/FF9933/white?text=PM+Meeting";
                       }}
                     />
