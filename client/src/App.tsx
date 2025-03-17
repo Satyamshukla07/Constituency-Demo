@@ -27,6 +27,12 @@ import { ProtectedRoute } from "@/lib/protected-route";
 import { Navbar } from "@/components/layout/navbar";
 import React, { useState, useEffect } from 'react';
 
+// Placeholder components
+const NewsSection = () => <div>News & Updates Placeholder</div>;
+const EventsCalendar = () => <div>Upcoming Events Calendar Placeholder</div>;
+const TestimonialsSection = () => <div>Testimonials & Supporters Placeholder</div>;
+const ContactSection = () => <div>Contact Section Placeholder</div>;
+
 
 function Router() {
   return (
@@ -294,6 +300,12 @@ function App() {
             </div>
           </div>
         </div>
+
+        {/* Added Sections */}
+        <NewsSection />
+        <EventsCalendar />
+        <TestimonialsSection />
+
 
         {/* Contact Section */}
         <div className="py-24 bg-white/50" id="contact">
