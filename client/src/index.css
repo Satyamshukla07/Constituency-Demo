@@ -4,10 +4,36 @@
 
 @layer base {
   * {
-    @apply border-border;
+    @apply border-border transition-all duration-300;
   }
 
   body {
-    @apply font-sans antialiased bg-background text-foreground;
+    @apply font-sans antialiased bg-slate-50 text-slate-800;
+  }
+
+  h1 {
+    @apply text-4xl font-bold tracking-tight;
+  }
+
+  h2 {
+    @apply text-3xl font-semibold tracking-tight;
+  }
+
+  button {
+    @apply shadow-sm hover:shadow-md active:scale-95;
+  }
+
+  input, textarea {
+    @apply bg-white/50 backdrop-blur-sm focus:ring-2 focus:ring-slate-300 transition-all duration-200;
+  }
+}
+
+@layer components {
+  .card {
+    @apply bg-white/80 backdrop-blur-sm shadow-lg rounded-xl p-6 hover:shadow-xl transition-all duration-300;
+  }
+  
+  .section {
+    @apply py-16 md:py-24;
   }
 }
