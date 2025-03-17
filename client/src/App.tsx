@@ -90,9 +90,25 @@ function App() {
               <p className="text-2xl text-[#FF9933] font-semibold mb-8">
                 General Secretary, Magathane Vidhansabha
               </p>
-              <p className="text-lg text-gray-600 max-w-2xl mx-auto mb-12">
+              <p className="text-lg text-gray-600 max-w-2xl mx-auto mb-8">
                 Dedicated BJP leader working towards the development and prosperity of Magathane constituency
               </p>
+              <div className="bg-white/80 backdrop-blur-sm rounded-lg p-6 shadow-xl mb-12 max-w-2xl mx-auto">
+                <h3 className="text-xl font-semibold text-[#FF9933] mb-4">Recent Highlight</h3>
+                <div className="flex items-center gap-6">
+                  <div className="w-48 h-48 rounded-lg overflow-hidden shadow-lg">
+                    <img 
+                      src="/assets/pm-meeting.jpeg" 
+                      alt="Meeting with PM Modi"
+                      className="w-full h-full object-cover"
+                    />
+                  </div>
+                  <div>
+                    <h4 className="text-lg font-semibold mb-2">Special Meeting with PM Narendra Modi</h4>
+                    <p className="text-gray-600">Honored to meet Hon'ble Prime Minister Shri Narendra Modi ji and discuss the development initiatives for Magathane constituency. Together we are working towards a stronger and more prosperous Mumbai.</p>
+                  </div>
+                </div>
+              </div>
               <Button asChild size="lg" className="bg-[#FF9933] hover:bg-[#FF9933]/90 shadow-lg transform hover:scale-105 transition-all">
                 <Link href="#contact">
                   <span className="flex items-center">
