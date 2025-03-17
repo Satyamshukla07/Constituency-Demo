@@ -98,9 +98,13 @@ function App() {
                 <div className="flex items-center gap-6">
                   <div className="w-48 h-48 rounded-lg overflow-hidden shadow-lg">
                     <img 
-                      src="/assets/pm-meeting.jpeg" 
+                      src="/assets/posts/pm-meeting.jpeg" 
                       alt="Meeting with PM Modi"
                       className="w-full h-full object-cover"
+                      onError={(e) => {
+                        const target = e.target as HTMLImageElement;
+                        target.src = "https://placehold.co/400x400/FF9933/white?text=PM+Meeting";
+                      }}
                     />
                   </div>
                   <div>
