@@ -34,7 +34,7 @@ const NewsSection = () => (
       <h2 className="text-3xl font-bold text-center mb-12">Latest News & Updates</h2>
       <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
         {[1, 2, 3].map((item) => (
-          <div key={item} className="card hover:translate-y-[-4px]">
+          <div key={item} className="bg-white rounded-xl shadow-lg overflow-hidden">
             <img src={`/assets/news-${item}.jpg`} alt="News" className="w-full h-48 object-cover" />
             <div className="p-6">
               <h3 className="text-xl font-semibold mb-2">Latest Development Update</h3>
@@ -54,7 +54,7 @@ const TestimonialsSection = () => (
       <h2 className="text-3xl font-bold text-center mb-12">What People Say</h2>
       <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
         {[1, 2, 3].map((item) => (
-          <div key={item} className="card hover:translate-y-[-4px] p-6 rounded-xl shadow-lg">
+          <div key={item} className="bg-white p-6 rounded-xl shadow-lg">
             <div className="flex items-center mb-4">
               <div className="w-12 h-12 rounded-full bg-gray-200 mr-4"></div>
               <div>
@@ -76,7 +76,7 @@ const EventsCalendar = () => (
       <h2 className="text-3xl font-bold text-center mb-12">Upcoming Events</h2>
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
         {[1, 2, 3].map((item) => (
-          <div key={item} className="card hover:translate-y-[-4px] p-6">
+          <div key={item} className="bg-white rounded-xl shadow-lg p-6">
             <div className="mb-4">
               <span className="text-lg font-semibold">Community Meeting</span>
               <p className="text-gray-500">March 25, 2024</p>
@@ -160,9 +160,9 @@ function App() {
 
   return (
     <QueryClientProvider client={queryClient}>
-      <div className="min-h-screen bg-gradient-to-b from-gray-100 to-white"> {/* Updated background */}
+      <div className="min-h-screen bg-gradient-to-b from-orange-50 to-white">
         {/* Hero Section */}
-        <div className="relative overflow-hidden bg-gradient-to-br from-[#f0f0f0]/20 via-white/50 to-[#f0f0f0]/20 min-h-screen"> {/* Updated background */}
+        <div className="relative overflow-hidden bg-gradient-to-br from-[#FF9933]/20 via-white/50 to-[#138808]/20 min-h-screen">
           <div className="absolute inset-0 bg-grid-white/10 [mask-image:linear-gradient(0deg,transparent,black)]" />
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-24">
             <motion.div
@@ -183,26 +183,26 @@ function App() {
                   }}
                   className="relative mb-8"
                 >
-                  <div className="w-48 h-48 md:w-64 md:h-64 rounded-full overflow-hidden border-4 border-gray-300 shadow-xl"> {/* Updated border color */}
+                  <div className="w-48 h-48 md:w-64 md:h-64 rounded-full overflow-hidden border-4 border-[#FF9933] shadow-xl">
                     <img
                       src="/assets/profile.jpeg"
                       alt="Lalit Shukla"
                       className="w-full h-full object-cover"
                       onError={(e) => {
                         const target = e.target as HTMLImageElement;
-                        target.src = "https://placehold.co/400x400/gray-300/white?text=LS"; {/* Updated placeholder */}
+                        target.src = "https://placehold.co/400x400/FF9933/white?text=LS";
                       }}
                     />
                   </div>
                   <div className="absolute -bottom-4 right-0 transform translate-x-1/4">
-                    <FaFlag className="w-16 h-16 text-gray-500" /> {/* Updated color */}
+                    <FaFlag className="w-16 h-16 text-[#FF9933]" />
                   </div>
                 </motion.div>
               </div>
               <h1 className="text-5xl md:text-6xl font-bold text-gray-900 mb-6">
                 Lalit Shukla
               </h1>
-              <p className="text-2xl text-gray-700 font-semibold mb-8"> {/* Updated color */}
+              <p className="text-2xl text-[#FF9933] font-semibold mb-8">
                 General Secretary, Magathane Vidhansabha
               </p>
               <p className="text-lg text-gray-600 max-w-2xl mx-auto mb-8">
@@ -211,7 +211,7 @@ function App() {
               <motion.button
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
-                className="bg-gray-800 text-white px-8 py-3 rounded-full font-semibold shadow-lg hover:bg-gray-700 transition-colors" {/* Updated button style */}
+                className="bg-[#FF9933] text-white px-8 py-3 rounded-full font-semibold shadow-lg hover:bg-[#FF8822] transition-colors"
               >
                 Join the Movement
               </motion.button>
@@ -230,7 +230,7 @@ function App() {
             >
               <h2 className="text-3xl font-bold text-center mb-12 text-gray-900">Recent Highlights</h2>
               <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-                <div className="card hover:translate-y-[-4px]">
+                <div className="bg-white rounded-xl shadow-lg overflow-hidden">
                   <img
                     src="/assets/posts/residential.jpeg"
                     alt="Community Service"
@@ -241,7 +241,7 @@ function App() {
                     <p className="text-gray-600">Dedicated to serving our residential community by actively addressing their concerns and needs.</p>
                   </div>
                 </div>
-                <div className="card hover:translate-y-[-4px]">
+                <div className="bg-white rounded-xl shadow-lg overflow-hidden">
                   <img
                     src="/assets/posts/pm-meeting.jpeg"
                     alt="Meeting with PM Modi"
@@ -275,41 +275,41 @@ function App() {
                 </p>
                 <div className="grid grid-cols-2 gap-4">
                   <div className="flex items-center gap-2">
-                    <Users className="w-5 h-5 text-gray-700" /> {/* Updated color */}
+                    <Users className="w-5 h-5 text-[#FF9933]" />
                     <span>Community Leader</span>
                   </div>
                   <div className="flex items-center gap-2">
-                    <Target className="w-5 h-5 text-gray-700" /> {/* Updated color */}
+                    <Target className="w-5 h-5 text-[#FF9933]" />
                     <span>Vision Driven</span>
                   </div>
                   <div className="flex items-center gap-2">
-                    <Calendar className="w-5 h-5 text-gray-700" /> {/* Updated color */}
+                    <Calendar className="w-5 h-5 text-[#FF9933]" />
                     <span>10+ Years Experience</span>
                   </div>
                   <div className="flex items-center gap-2">
-                    <Sparkles className="w-5 h-5 text-gray-700" /> {/* Updated color */}
+                    <Sparkles className="w-5 h-5 text-[#FF9933]" />
                     <span>BJP Core Member</span>
                   </div>
                 </div>
               </div>
               <div className="space-y-6">
-                <div className="card hover:translate-y-[-4px] p-6 shadow-lg"> {/* Updated card style */}
+                <div className="bg-white rounded-lg p-6 shadow-lg">
                   <h3 className="text-xl font-semibold mb-4">Key Focus Areas</h3>
                   <ul className="space-y-3">
                     <li className="flex items-center gap-2">
-                      <div className="h-2 w-2 rounded-full bg-gray-700" /> {/* Updated color */}
+                      <div className="h-2 w-2 rounded-full bg-[#FF9933]" />
                       <span>Infrastructure Development</span>
                     </li>
                     <li className="flex items-center gap-2">
-                      <div className="h-2 w-2 rounded-full bg-gray-700" /> {/* Updated color */}
+                      <div className="h-2 w-2 rounded-full bg-[#FF9933]" />
                       <span>Education Initiatives</span>
                     </li>
                     <li className="flex items-center gap-2">
-                      <div className="h-2 w-2 rounded-full bg-gray-700" /> {/* Updated color */}
+                      <div className="h-2 w-2 rounded-full bg-[#FF9933]" />
                       <span>Healthcare Access</span>
                     </li>
                     <li className="flex items-center gap-2">
-                      <div className="h-2 w-2 rounded-full bg-gray-700" /> {/* Updated color */}
+                      <div className="h-2 w-2 rounded-full bg-[#FF9933]" />
                       <span>Cultural Preservation</span>
                     </li>
                   </ul>
@@ -323,9 +323,9 @@ function App() {
         <div className="py-24" id="achievements">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6, ease: "easeOut" }}
+              initial={{ opacity: 0 }}
+              whileInView={{ opacity: 1 }}
+              transition={{ duration: 0.8 }}
               className="text-center mb-12"
             >
               <h2 className="text-3xl font-bold text-gray-900 mb-4">
@@ -342,9 +342,9 @@ function App() {
                   initial={{ opacity: 0, y: 20 }}
                   whileInView={{ opacity: 1, y: 0 }}
                   transition={{ duration: 0.5, delay: index * 0.1 }}
-                  className="card hover:translate-y-[-4px] p-6 shadow-lg"
+                  className="bg-white rounded-lg p-6 shadow-lg"
                 >
-                  <Award className="w-12 h-12 text-gray-700 mb-4" /> {/* Updated color */}
+                  <Award className="w-12 h-12 text-[#FF9933] mb-4" />
                   <h3 className="text-xl font-semibold mb-2">{achievement.title}</h3>
                   <p className="text-gray-600">{achievement.description}</p>
                 </motion.div>
@@ -357,9 +357,9 @@ function App() {
         <div className="py-24 bg-white/50" id="posts">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6, ease: "easeOut" }}
+              initial={{ opacity: 0 }}
+              whileInView={{ opacity: 1 }}
+              transition={{ duration: 0.8 }}
               className="text-center mb-12"
             >
               <h2 className="text-3xl font-bold text-gray-900 mb-4">
@@ -376,7 +376,7 @@ function App() {
                   initial={{ opacity: 0, y: 20 }}
                   whileInView={{ opacity: 1, y: 0 }}
                   transition={{ duration: 0.5, delay: index * 0.1 }}
-                  className="card hover:translate-y-[-4px] shadow-lg"
+                  className="bg-white rounded-lg overflow-hidden shadow-lg"
                 >
                   <div className="aspect-video relative overflow-hidden">
                     <img
@@ -385,7 +385,7 @@ function App() {
                       className="w-full h-full object-cover hover:scale-105 transition-transform duration-300"
                       onError={(e) => {
                         // Fallback to a local placeholder if the image fails to load
-                        e.currentTarget.src = "https://placehold.co/600x400/gray-300/white?text=Activity"; {/*Updated placeholder*/}
+                        e.currentTarget.src = "https://placehold.co/600x400/FF9933/white?text=Activity";
                       }}
                     />
                   </div>
@@ -462,21 +462,21 @@ const posts = [
   {
     title: "शिक्षा सशक्तिकरण - Education Empowerment",
     description: "Distributing educational materials to underprivileged students. भविष्य की नींव, शिक्षा के साथ।",
-    imageUrl: "https://placehold.co/600x400/gray-300/white?text=Education+Initiative", {/*Updated placeholder*/}
+    imageUrl: "https://placehold.co/600x400/FF9933/white?text=Education+Initiative",
     date: "February 28, 2025",
     location: "Magathane School Complex"
   },
   {
     title: "स्वास्थ्य शिविर - Health Camp",
     description: "Free health checkup camp organized for senior citizens. स्वस्थ समाज, सशक्त समाज।",
-    imageUrl: "https://placehold.co/600x400/gray-300/white?text=Health+Camp", {/*Updated placeholder*/}
+    imageUrl: "https://placehold.co/600x400/FF9933/white?text=Health+Camp",
     date: "February 25, 2025",
     location: "Community Center"
   },
   {
     title: "भाजपा कार्यकर्ता सम्मेलन",
     description: "Meeting with BJP workers to discuss party initiatives and future plans. संगठन की मजबूती, विकास की गारंटी।",
-    imageUrl: "https://placehold.co/600x400/gray-300/white?text=BJP+Workers+Meet", {/*Updated placeholder*/}
+    imageUrl: "https://placehold.co/600x400/FF9933/white?text=BJP+Workers+Meet",
     date: "February 20, 2025",
     location: "BJP Office Magathane"
   }
