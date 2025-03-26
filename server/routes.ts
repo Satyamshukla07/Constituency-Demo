@@ -108,7 +108,13 @@ export async function registerRoutes(app: Express): Promise<Server> {
     const result = insertIssueSchema.safeParse(req.body);
     if (!result.success) return res.status(400).json(result.error);
 
-    storage.createIssue({ ...result.data, reportedById: req.user.id })
+    const issueData = {
+      ...result.data,
+      imageUrl: result.data.imageUrl || null,
+      reportedById: req.user.id
+    };
+    
+    storage.createIssue(issueData)
       .then(issue => res.status(201).json(issue))
       .catch(err => res.status(500).json({ message: err.message }));
   });

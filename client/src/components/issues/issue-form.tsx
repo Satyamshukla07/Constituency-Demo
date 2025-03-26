@@ -106,8 +106,14 @@ export function IssueForm() {
             <FormItem>
               <FormLabel>Image URL</FormLabel>
               <FormControl>
-                <Input placeholder="URL to an image of the issue" {...field} />
+                <Input 
+                  placeholder="URL to an image of the issue (optional)" 
+                  {...field} 
+                />
               </FormControl>
+              <FormDescription>
+                Leave empty if no image is available
+              </FormDescription>
               <FormMessage />
             </FormItem>
           )}
